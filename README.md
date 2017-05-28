@@ -1,6 +1,6 @@
 # Utility Pack
 
-A set of small utilities for PHP.
+A set of small utilities for PHP 7.1+.
 
 ## QueryString
 
