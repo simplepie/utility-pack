@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace FactoryApi\Util;
+namespace Skyzyx\UtilityPack;
 
 use DateTime;
 use DateTimeZone;
@@ -26,8 +26,10 @@ class Time
     public const DAYS    = 86400;
     public const WEEK    = 604800;
     public const WEEKS   = 604800;
+    public const YEAR    = 31557600;
+    public const YEARS   = 31557600;
 
-    public const FORMAT_ISO8601 = 'Y-m-d\TH:i:s\Z';
+    public const FORMAT_ISO8601_ZULU = 'Y-m-d\TH:i:s\Z';
 
     /**
      * Returns the current time as a DateTime object.

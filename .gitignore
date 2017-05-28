@@ -1,4 +1,6 @@
 .DS_Store
+.phpintel/
 bin/
 reports/
+tests/report/
 vendor/

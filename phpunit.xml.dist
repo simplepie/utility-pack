@@ -17,12 +17,6 @@
         <testsuite name="unit">
             <directory phpVersion="7.1.0" phpVersionOperator=">=" suffix="Test.php">tests/Unit</directory>
         </testsuite>
-        <testsuite name="integration">
-            <directory phpVersion="7.1.0" phpVersionOperator=">=" suffix="Test.php">tests/Integration</directory>
-        </testsuite>
-        <testsuite name="functional">
-            <directory phpVersion="7.1.0" phpVersionOperator=">=" suffix="Test.php">tests/Functional</directory>
-        </testsuite>
     </testsuites>
 
     <filter>

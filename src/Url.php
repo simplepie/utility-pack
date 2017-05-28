@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace FactoryApi\Util;
+namespace Skyzyx\UtilityPack;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 

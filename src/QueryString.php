@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace FactoryApi\Util;
+namespace Skyzyx\UtilityPack;
 
 /**
  * A standardized builder for URI query strings.
