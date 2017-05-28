@@ -27,7 +27,7 @@ lint:
 	- bin/phpcbf -p --encoding=utf-8 --tab-width=4 src/
 
 .PHONY: analyze
-analyze: #lint test
+analyze:
 	@ echo " "
 	@ echo "=====> Running PHP Copy-Paste Detector..."
 	- bin/phpcpd --names=*.php --log-pmd=$$(pwd)/reports/copy-paste.xml --fuzzy src/
