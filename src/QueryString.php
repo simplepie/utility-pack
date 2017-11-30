@@ -1,9 +1,7 @@
 <?php
-/*
- * Copyright (c) 2010-2016 Ryan Parman
- * Copyright (c) 2016 Lucky Rocketship Underpants, LLC.
- *
- * Licensed to McGraw-Hill Education to use for any purpose.
+/**
+ * Copyright (c) 2010-2017 Ryan Parman
+ * Copyright (c) 2016-2017 Lucky Rocketship Underpants, LLC.
  */
 
 declare(strict_types=1);
@@ -26,6 +24,6 @@ class QueryString
      */
     public static function build(array $qsa): string
     {
-        return http_build_query($qsa, '', '&', PHP_QUERY_RFC1738);
+        return \http_build_query($qsa, '', '&', PHP_QUERY_RFC1738);
     }
 }

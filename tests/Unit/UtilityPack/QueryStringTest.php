@@ -1,8 +1,7 @@
 <?php
-/*
- * Copyright (c) 2016-2017 McGraw-Hill Education.
- *
- * All rights reserved, unless this code has already been open-sourced elsewhere.
+/**
+ * Copyright (c) 2010-2017 Ryan Parman
+ * Copyright (c) 2016-2017 Lucky Rocketship Underpants, LLC.
  */
 
 declare(strict_types=1);
@@ -12,9 +11,12 @@ namespace Skyzyx\Test\Unit\UtilityPack;
 use Skyzyx\Test\Unit\AbstractTestCase;
 use Skyzyx\UtilityPack\QueryString;
 
+/**
+ * @coversNothing
+ */
 class QueryStringTest extends AbstractTestCase
 {
-    public function testBuild()
+    public function testBuild(): void
     {
         $this->assertEquals('limit=a', QueryString::build([
             'limit' => 'a',

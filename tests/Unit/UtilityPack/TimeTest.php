@@ -1,8 +1,7 @@
 <?php
-/*
- * Copyright (c) 2016-2017 McGraw-Hill Education.
- *
- * All rights reserved, unless this code has already been open-sourced elsewhere.
+/**
+ * Copyright (c) 2010-2017 Ryan Parman
+ * Copyright (c) 2016-2017 Lucky Rocketship Underpants, LLC.
  */
 
 declare(strict_types=1);
@@ -12,9 +11,12 @@ namespace Skyzyx\Test\Unit\UtilityPack;
 use Skyzyx\Test\Unit\AbstractTestCase;
 use Skyzyx\UtilityPack\Time;
 
+/**
+ * @coversNothing
+ */
 class TimeTest extends AbstractTestCase
 {
-    public function testTimeCalc()
+    public function testTimeCalc(): void
     {
         // Seconds
         $this->assertEquals(1, 1 * Time::SECOND);
@@ -42,8 +44,8 @@ class TimeTest extends AbstractTestCase
         $this->assertEquals(1814400, 3 * Time::WEEKS);
     }
 
-    public function testDayCalc()
+    public function testDayCalc(): void
     {
-        $this->assertEquals('DateTime', get_class(Time::now()));
+        $this->assertEquals('DateTime', \get_class(Time::now()));
     }
 }
