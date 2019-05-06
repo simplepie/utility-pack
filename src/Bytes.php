@@ -1,60 +1,97 @@
 <?php
 /**
- * Copyright (c) 2010-2017 Ryan Parman
- * Copyright (c) 2016-2017 Lucky Rocketship Underpants, LLC.
+ * Copyright (c) 2010–2019 Ryan Parman <http://ryanparman.com>.
+ * Copyright (c) 2016–2019 Contributors.
+ *
+ * http://opensource.org/licenses/Apache2.0
  */
 
 declare(strict_types=1);
 
-namespace Skyzyx\UtilityPack;
+namespace SimplePie\Util\Pack;
 
 use RuntimeException;
 
 class Bytes
 {
     // Multipliers
-    public const BYTE  = 1;
+    public const BYTE = 1;
+
     public const BYTES = 1;
 
     // Base 2 (e.g., 1024)
-    public const KIB       = 1024;                // 2 ** 10
-    public const KIBIBYTE  = 1024;                // 2 ** 10
+    public const KIB = 1024;                // 2 ** 10
+
+    public const KIBIBYTE = 1024;                // 2 ** 10
+
     public const KIBIBYTES = 1024;                // 2 ** 10
-    public const MIB       = 1048576;             // 2 ** 20
-    public const MEBIBYTE  = 1048576;             // 2 ** 20
+
+    public const MIB = 1048576;             // 2 ** 20
+
+    public const MEBIBYTE = 1048576;             // 2 ** 20
+
     public const MEBIBYTES = 1048576;             // 2 ** 20
-    public const GIB       = 1073741824;          // 2 ** 30
-    public const GIBIBYTE  = 1073741824;          // 2 ** 30
+
+    public const GIB = 1073741824;          // 2 ** 30
+
+    public const GIBIBYTE = 1073741824;          // 2 ** 30
+
     public const GIBIBYTES = 1073741824;          // 2 ** 30
-    public const TIB       = 1099511627776;       // 2 ** 40
-    public const TEBIBYTE  = 1099511627776;       // 2 ** 40
+
+    public const TIB = 1099511627776;       // 2 ** 40
+
+    public const TEBIBYTE = 1099511627776;       // 2 ** 40
+
     public const TEBIBYTES = 1099511627776;       // 2 ** 40
-    public const PIB       = 1125899906842624;    // 2 ** 50
-    public const PEBIBYTE  = 1125899906842624;    // 2 ** 50
+
+    public const PIB = 1125899906842624;    // 2 ** 50
+
+    public const PEBIBYTE = 1125899906842624;    // 2 ** 50
+
     public const PEBIBYTES = 1125899906842624;    // 2 ** 50
-    public const EIB       = 1152921504606846976; // 2 ** 60
-    public const EXBIBYTE  = 1152921504606846976; // 2 ** 60
+
+    public const EIB = 1152921504606846976; // 2 ** 60
+
+    public const EXBIBYTE = 1152921504606846976; // 2 ** 60
+
     public const EXBIBYTES = 1152921504606846976; // 2 ** 60
 
     // Base 10 (e.g., 1000)
-    public const KB        = 1000;                // 10 ** 3
-    public const KILOBYTE  = 1000;                // 10 ** 3
+    public const KB = 1000;                // 10 ** 3
+
+    public const KILOBYTE = 1000;                // 10 ** 3
+
     public const KILOBYTES = 1000;                // 10 ** 3
-    public const MB        = 1000000;             // 10 ** 6
-    public const MEGABYTE  = 1000000;             // 10 ** 6
+
+    public const MB = 1000000;             // 10 ** 6
+
+    public const MEGABYTE = 1000000;             // 10 ** 6
+
     public const MEGABYTES = 1000000;             // 10 ** 6
-    public const GB        = 1000000000;          // 10 ** 9
-    public const GIGABYTE  = 1000000000;          // 10 ** 9
+
+    public const GB = 1000000000;          // 10 ** 9
+
+    public const GIGABYTE = 1000000000;          // 10 ** 9
+
     public const GIGABYTES = 1000000000;          // 10 ** 9
-    public const TB        = 1000000000000;       // 10 ** 12
-    public const TERABYTE  = 1000000000000;       // 10 ** 12
+
+    public const TB = 1000000000000;       // 10 ** 12
+
+    public const TERABYTE = 1000000000000;       // 10 ** 12
+
     public const TERABYTES = 1000000000000;       // 10 ** 12
-    public const PB        = 1000000000000000;    // 10 ** 15
-    public const PETABYTE  = 1000000000000000;    // 10 ** 15
+
+    public const PB = 1000000000000000;    // 10 ** 15
+
+    public const PETABYTE = 1000000000000000;    // 10 ** 15
+
     public const PETABYTES = 1000000000000000;    // 10 ** 15
-    public const EB        = 1000000000000000000; // 10 ** 18
-    public const EXABYTE   = 1000000000000000000; // 10 ** 18
-    public const EXABYTES  = 1000000000000000000; // 10 ** 18
+
+    public const EB = 1000000000000000000; // 10 ** 18
+
+    public const EXABYTE = 1000000000000000000; // 10 ** 18
+
+    public const EXABYTES = 1000000000000000000; // 10 ** 18
 
     /**
      * Notations for converted values.
@@ -117,9 +154,7 @@ class Bytes
      * @param string   $format    The final value is formatted using `sprintf()`. This is the format that should be
      *                            used. The default value is `%01.2f %s`.
      *
-     * @return string
-     *
-     * @codingStandardsIgnoreStart
+     * phpcs:disable Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine
      */
     public static function format(
         int $bytes,
@@ -127,7 +162,7 @@ class Bytes
         ?int $base = null,
         string $format = '%01.2f %s'
     ): string {
-        // @codingStandardsIgnoreEnd
+        // phpcs:enable
 
         $units = $useBase10
             ? self::$base[10]
@@ -176,8 +211,6 @@ class Bytes
      * * 3 = 1073741824 (gibi)
      *
      * @param int $stepping The stepping to calculate the value for.
-     *
-     * @return int
      */
     public static function base2(int $stepping): int
     {
@@ -193,8 +226,6 @@ class Bytes
      * * 3 = 1000000000 (giga)
      *
      * @param int $stepping The stepping to calculate the value for.
-     *
-     * @return int
      */
     public static function base10(int $stepping): int
     {

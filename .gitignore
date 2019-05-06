@@ -1,6 +1,7 @@
 .DS_Store
 .php_cs.cache
 .phpintel/
+.phpunit.result.cache
 bin/
 reports/
 tests/report/

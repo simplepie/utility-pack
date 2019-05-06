@@ -8,7 +8,7 @@ Believe it or not, different PHP installations can have different default values
 
 ```php
 <?php
-use Skyzyx\UtilityPack\QueryString;
+use SimplePie\Util\Pack\QueryString;
 
 echo QueryString::build([
     'limit'  => 'a',
@@ -25,7 +25,7 @@ Simple constants for time. Makes time calculations easier to read and understand
 
 ```php
 <?php
-use Skyzyx\UtilityPack\Time;
+use SimplePie\Util\Pack\Time;
 
 echo sprintf('%s, %s, %s', 1 * Time::SECOND, 2 * Time::SECONDS, 10 * Time::SECONDS);
 #=> 1, 2, 10
@@ -50,7 +50,7 @@ You can also use the standard ISO-8601 format, with _second_ granularity, and se
 
 ```php
 <?php
-use Skyzyx\UtilityPack\Time;
+use SimplePie\Util\Pack\Time;
 
 echo gmdate(Time::FORMAT_ISO8601_ZULU); 
 #=> 2017-05-28T01:46:06Z
@@ -62,7 +62,7 @@ You can easily get the scalar type or classname of any object.
 
 ```php
 <?php
-use Skyzyx\UtilityPack\Types;
+use SimplePie\Util\Pack\Types;
 
 echo Types::getClassOrType(
     new \SimpleXMLElement('<xml/>')

@@ -1,12 +1,14 @@
 <?php
 /**
- * Copyright (c) 2010-2017 Ryan Parman
- * Copyright (c) 2016-2017 Lucky Rocketship Underpants, LLC.
+ * Copyright (c) 2010–2019 Ryan Parman <http://ryanparman.com>.
+ * Copyright (c) 2016–2019 Contributors.
+ *
+ * http://opensource.org/licenses/Apache2.0
  */
 
 declare(strict_types=1);
 
-namespace Skyzyx\UtilityPack;
+namespace SimplePie\Util\Pack;
 
 /**
  * A standardized builder for URI query strings.
@@ -24,6 +26,6 @@ class QueryString
      */
     public static function build(array $qsa): string
     {
-        return \http_build_query($qsa, '', '&', PHP_QUERY_RFC1738);
+        return \http_build_query($qsa, '', '&', \PHP_QUERY_RFC1738);
     }
 }

@@ -1,33 +1,63 @@
+#-------------------------------------------------------------------------------
+# Running `make` will show the list of subcommands that will run.
+
 all:
-	@cat Makefile | grep : | grep -v PHONY | grep -v @ | sed 's/:/ /' | awk '{print $$1}' | sort
+	@cat Makefile | grep "^[a-z]" | sed 's/://' | awk '{print $$1}'
 
 #-------------------------------------------------------------------------------
+# Running tests
+
+.PHONY: test
+test:
+	bin/phpunit
+
+#-------------------------------------------------------------------------------
+# PHP build process stuff
+
+.PHONY: install-composer
+install-composer:
+	- SUDO="" && [[ $$UID -ne 0 ]] && SUDO="sudo"; \
+	curl -sSL https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer \
+	    | $$SUDO $$(which php) -- --install-dir=/usr/local/bin --filename=composer
 
 .PHONY: install
 install:
 	composer self-update
-	composer install -o
+	composer install -oa
 
-.PHONY: test
-test:
-	php bin/phpunit
+.PHONY: dump
+dump:
+	composer dump-autoload -oa
+
+.PHONY: install-hooks
+install-hooks:
+	printf '#!/usr/bin/env bash\nmake lint\nmake test' > .git/hooks/pre-commit
+	chmod +x .git/hooks/pre-commit
 
 #-------------------------------------------------------------------------------
+# Linting and Static Analysis
 
 .PHONY: lint
 lint:
+	@ mkdir -p reports
+
 	@ echo " "
 	@ echo "=====> Running PHP CS Fixer..."
 	- bin/php-cs-fixer fix -vvv
 
 	@ echo " "
 	@ echo "=====> Running PHP Code Sniffer..."
-	- mkdir -p reports/
-	- bin/phpcs -p --encoding=utf-8 --tab-width=4 --report=checkstyle --report-file=reports/phpcs.xml src/
-	- bin/phpcbf -p --encoding=utf-8 --tab-width=4 src/
+	- bin/phpcs --report-xml=reports/phpcs-src.xml -p --colors --encoding=utf-8 $$(find src/ -type f -name "*.php" | sort | uniq)
+	- bin/phpcs --report-xml=reports/phpcs-tests.xml -p --colors --encoding=utf-8 $$(find tests/ -type f -name "*.php" | sort | uniq)
+	- bin/phpcbf --encoding=utf-8 --tab-width=4 src/ 1>/dev/null
+	- bin/phpcbf --encoding=utf-8 --tab-width=4 tests/ 1>/dev/null
+	@ echo " "
+	@ echo "---------------------------------------------------------------------------------------"
+	@ echo " "
+	@ php tools/reporter.php
 
 .PHONY: analyze
-analyze:
+analyze: lint test
 	@ echo " "
 	@ echo "=====> Running PHP Copy-Paste Detector..."
 	- bin/phpcpd --names=*.php --log-pmd=$$(pwd)/reports/copy-paste.xml --fuzzy src/
@@ -39,47 +69,28 @@ analyze:
 
 	@ echo " "
 	@ echo "=====> Running PHP Code Analyzer..."
-	- php bin/phpca src/ --no-progress
-	- php bin/phpca tests/ --no-progress
+	- php bin/phpca src/ --no-progress | tee reports/phpca-src.txt
+	- php bin/phpca tests/ --no-progress | tee reports/phpca-tests.txt
 
 	@ echo " "
 	@ echo "=====> Running PHP Metrics Generator..."
-	- bin/phpmetrics --config ./phpmetrics.yml --template-title="Metrics" --level=10 src/
-
-	@ echo " "
-	@ echo "=====> Running PDepend..."
-	- bin/pdepend \
-	    --configuration=$$(pwd)/pdepend.xml.dist \
-	    --dependency-xml=$$(pwd)/reports/pdepend.full.xml \
-	    --summary-xml=$$(pwd)/reports/pdepend.summary.xml \
-	    --jdepend-chart=$$(pwd)/reports/jdepend.chart \
-	    --jdepend-xml=$$(pwd)/reports/jdepend.xml \
-	    --overview-pyramid=$$(pwd)/reports/overview \
-	    src/ \
-	;
+	@ # phpmetrics/phpmetrics
+	- bin/phpmetrics --config $$(pwd)/phpmetrics.yml --template-title="SimplePie NG" --level=10 src/
 
 	@ echo " "
 	@ echo "=====> Running Open-Source License Check..."
-	- composer licenses | grep -v BSD-.-Clause | grep -v MIT | grep -v Apache-2.0
+	- composer licenses -d www | grep -v BSD-.-Clause | grep -v MIT | grep -v Apache-2.0 | tee reports/licenses.txt
 
 	@ echo " "
 	@ echo "=====> Comparing Composer dependencies against the PHP Security Advisories Database..."
-	- curl -H "Accept: text/plain" https://security.sensiolabs.org/check_lock -F lock=@composer.lock
-
-	@ echo " "
-	@ echo "=====> Running Quality Analyzer..."
-	- bin/analyze --coverage=tests/report/clover.xml --checkstyle=reports/phpcs.xml --tests=tests/report/logfile.xml --cpd=reports/copy-paste.xml --phploc=reports/phploc-src.xml --exclude_analyzers=pdepend,phpmd,dependencies analyze src/
-	- bin/analyze bundle reports/analyze/
-	@ echo "*******************************************************************"
-	@ echo "Start a local web server to view the results"
-	@ echo "php -S 4000 -t $$(pwd)/reports/analyze/"
-	@ echo "*******************************************************************"
+	- curl -sSL -H "Accept: text/plain" https://security.sensiolabs.org/check_lock -F lock=@composer.lock | tee reports/sensiolabs.txt
 
 #-------------------------------------------------------------------------------
+# Git Tasks
 
 .PHONY: tag
 tag:
-	@ if [ $$(git status -s -uall | grep -v "## master...origin/master" | wc -l) != 0 ]; then echo 'ERROR: Git workspace must be clean.'; exit 1; fi;
+	@ if [ $$(git status -s -uall | wc -l) != 0 ]; then echo 'ERROR: Git workspace must be clean.'; exit 1; fi;
 
 	@echo "This release will be tagged as: $$(cat ./VERSION)"
 	@echo "This version should match your release. If it doesn't, re-run 'make version'."
@@ -102,8 +113,6 @@ tag:
 	git add .
 	git commit -a -m "Preparing the $$(cat ./VERSION) release."
 	chag tag --sign
-
-#-------------------------------------------------------------------------------
 
 .PHONY: version
 version:

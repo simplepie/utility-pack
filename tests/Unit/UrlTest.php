@@ -1,15 +1,16 @@
 <?php
 /**
- * Copyright (c) 2010-2017 Ryan Parman
- * Copyright (c) 2016-2017 Lucky Rocketship Underpants, LLC.
+ * Copyright (c) 2010–2019 Ryan Parman <http://ryanparman.com>.
+ * Copyright (c) 2016–2019 Contributors.
+ *
+ * http://opensource.org/licenses/Apache2.0
  */
 
 declare(strict_types=1);
 
-namespace Skyzyx\Test\Unit\UtilityPack;
+namespace SimplePie\Test\Util\Pack\Unit;
 
-use Skyzyx\Test\Unit\AbstractTestCase;
-use Skyzyx\UtilityPack\Url;
+use SimplePie\Util\Pack\Url;
 use Slim\Http\Environment;
 use Slim\Http\Request;
 
@@ -28,7 +29,7 @@ class UrlTest extends AbstractTestCase
             'QUERY_STRING' => 'qsa=asq',
         ]));
 
-        $this->assertEquals('http://example.org/testing?qsa=asq', Url::getCompleteUrl($request));
+        static::assertEquals('http://example.org/testing?qsa=asq', Url::getCompleteUrl($request));
     }
 
     public function testUrlWith443(): void
@@ -41,7 +42,7 @@ class UrlTest extends AbstractTestCase
             'QUERY_STRING' => 'qsa=asq',
         ]));
 
-        $this->assertEquals('https://example.org/testing?qsa=asq', Url::getCompleteUrl($request));
+        static::assertEquals('https://example.org/testing?qsa=asq', Url::getCompleteUrl($request));
     }
 
     public function testUrlWith22(): void
@@ -54,7 +55,7 @@ class UrlTest extends AbstractTestCase
             'QUERY_STRING' => 'qsa=asq',
         ]));
 
-        $this->assertEquals('http://example.com/testing?qsa=asq', Url::getCompleteUrl($request));
+        static::assertEquals('http://example.com/testing?qsa=asq', Url::getCompleteUrl($request));
     }
 
     public function testUrlWith22NoQsa(): void
@@ -66,7 +67,7 @@ class UrlTest extends AbstractTestCase
             'REQUEST_URI' => '/testing',
         ]));
 
-        $this->assertEquals('http://example.com/testing', Url::getCompleteUrl($request));
+        static::assertEquals('http://example.com/testing', Url::getCompleteUrl($request));
     }
 
     public function testUrlWith22NoQsaNoPath(): void
@@ -77,7 +78,7 @@ class UrlTest extends AbstractTestCase
             'SERVER_PORT' => 22,
         ]));
 
-        $this->assertEquals('http://example.com/', Url::getCompleteUrl($request));
+        static::assertEquals('http://example.com/', Url::getCompleteUrl($request));
     }
 
     public function testUrlWith80NoQsaNoPath(): void
@@ -88,7 +89,7 @@ class UrlTest extends AbstractTestCase
             'SERVER_PORT' => 80,
         ]));
 
-        $this->assertEquals('http://example.com/', Url::getCompleteUrl($request));
+        static::assertEquals('http://example.com/', Url::getCompleteUrl($request));
     }
 
     public function testUrlWith80NoQsaNoPathNoPort(): void
@@ -98,6 +99,6 @@ class UrlTest extends AbstractTestCase
             'HTTP_HOST' => 'example.com',
         ]));
 
-        $this->assertEquals('http://example.com/', Url::getCompleteUrl($request));
+        static::assertEquals('http://example.com/', Url::getCompleteUrl($request));
     }
 }
