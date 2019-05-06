@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Unreleased
+## 2.0.0
 
 * Changed namespace from `Skyzyx\UtilityPack` → `SimplePie\UtilityPack\Util`.
 * Added some traits that were extracted from SimplePie NG.
