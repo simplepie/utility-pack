@@ -8,9 +8,10 @@
 
 declare(strict_types=1);
 
-namespace SimplePie\Test\Util\Pack\Unit;
+namespace SimplePie\Test\UtilityPack\Unit\Util;
 
-use SimplePie\Util\Pack\Bytes;
+use SimplePie\Test\UtilityPack\Unit\AbstractTestCase;
+use SimplePie\UtilityPack\Util\Bytes;
 
 /**
  * @coversNothing

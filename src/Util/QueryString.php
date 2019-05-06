@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace SimplePie\Util\Pack;
+namespace SimplePie\UtilityPack\Util;
 
 /**
  * A standardized builder for URI query strings.

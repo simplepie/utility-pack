@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace SimplePie\Test\Util\Pack\Unit;
+namespace SimplePie\Test\UtilityPack\Unit;
 
 use PHPUnit\Framework\TestCase;
 

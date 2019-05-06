@@ -40,8 +40,8 @@
     },
     "autoload": {
         "psr-4": {
-            "SimplePie\\Util\\Pack\\": "src/",
-            "SimplePie\\Test\\Util\\Pack\\": "tests/"
+            "SimplePie\\UtilityPack\\": "src/",
+            "SimplePie\\Test\\UtilityPack\\": "tests/"
         }
     }
 }

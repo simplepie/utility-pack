@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace SimplePie\Util\Pack;
+namespace SimplePie\UtilityPack\Util;
 
 use DateTime;
 use DateTimeZone;
