@@ -56,7 +56,7 @@ trait LibxmlTrait
     /**
      * Gets the default (preferred) configuration for libxml.
      */
-    public static function getDefaultConfig(): int
+    public static function getDefaultLibxmlConfig(): int
     {
         return \LIBXML_HTML_NOIMPLIED // Required, or things crash.
             | \LIBXML_BIGLINES

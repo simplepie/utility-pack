@@ -31,4 +31,20 @@ trait DomDocumentTrait
     {
         return $this->domDocument;
     }
+
+    /**
+     * Gets the default (preferred) configuration for DOMDocument.
+     */
+    public function getDefaultDomConfig(DOMDocument $domDocument)
+    {
+        $domDocument->recover             = true;
+        $domDocument->formatOutput        = false;
+        $domDocument->preserveWhiteSpace  = false;
+        $domDocument->resolveExternals    = true;
+        $domDocument->substituteEntities  = true;
+        $domDocument->strictErrorChecking = false;
+        $domDocument->validateOnParse     = false;
+
+        return $domDocument;
+    }
 }
