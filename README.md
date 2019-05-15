@@ -1,3 +1,10 @@
+<div align="center"><img src="logo.png" width="500"><br></div>
+
+----
+
+[![Medium](https://img.shields.io/badge/medium-simplepie--ng-blue.svg?style=for-the-badge)](https://medium.com/simplepie-ng)
+[![Follow](https://img.shields.io/twitter/follow/simplepie_ng.svg?style=for-the-badge&label=Twitter)](https://twitter.com/intent/follow?screen_name=simplepie_ng)
+
 # Utility Pack
 
 A set of small utilities for PHP 7.2+.
