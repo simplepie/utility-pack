@@ -23,6 +23,22 @@ trait LibxmlTrait
     protected $libxml;
 
     /**
+     * Gets the default (preferred) configuration for libxml.
+     */
+    public static function getDefaultLibxmlConfig(): int
+    {
+        return \LIBXML_HTML_NOIMPLIED // Required, or things crash.
+            | \LIBXML_BIGLINES
+            | \LIBXML_COMPACT
+            | \LIBXML_HTML_NODEFDTD
+            | \LIBXML_NOBLANKS
+            | \LIBXML_NOENT
+            | \LIBXML_NOXMLDECL
+            | \LIBXML_NSCLEAN
+            | \LIBXML_PARSEHUGE;
+    }
+
+    /**
      * Sets the libxml value to use for parsing XML.
      *
      * @param int $libxml TODO add a description here.
@@ -51,21 +67,5 @@ trait LibxmlTrait
     public function getLibxml(): int
     {
         return $this->libxml;
-    }
-
-    /**
-     * Gets the default (preferred) configuration for libxml.
-     */
-    public static function getDefaultLibxmlConfig(): int
-    {
-        return \LIBXML_HTML_NOIMPLIED // Required, or things crash.
-            | \LIBXML_BIGLINES
-            | \LIBXML_COMPACT
-            | \LIBXML_HTML_NODEFDTD
-            | \LIBXML_NOBLANKS
-            | \LIBXML_NOENT
-            | \LIBXML_NOXMLDECL
-            | \LIBXML_NSCLEAN
-            | \LIBXML_PARSEHUGE;
     }
 }
