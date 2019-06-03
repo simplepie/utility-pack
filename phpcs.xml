@@ -33,8 +33,8 @@
     </rule>
     <rule ref="Generic.Metrics.NestingLevel">
         <properties>
-            <property name="nestingLevel" value="3"/>
-            <property name="absoluteNestingLevel" value="3"/>
+            <property name="nestingLevel" value="4"/>
+            <property name="absoluteNestingLevel" value="4"/>
         </properties>
     </rule>
     <rule ref="Generic.NamingConventions.ConstructorName"/>
@@ -45,7 +45,7 @@
     <rule ref="Generic.PHP.NoSilencedErrors"/>
     <rule ref="Generic.PHP.LowerCaseConstant"/>
     <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
-    <rule ref="Generic.WhiteSpace.ScopeIndent"/>
+    <!-- <rule ref="Generic.WhiteSpace.ScopeIndent"/> -->
     <rule ref="MySource.PHP.EvalObjectFactory"/>
     <rule ref="PEAR.Classes.ClassDeclaration"/>
     <rule ref="PEAR.Commenting.InlineComment"/>
@@ -60,7 +60,7 @@
     <rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
     <!-- <rule ref="PEAR.WhiteSpace.ScopeIndent"/> -->
     <rule ref="PSR1.Classes.ClassDeclaration"/>
-    <rule ref="PSR1.Files.SideEffects"/>
+    <!-- <rule ref="PSR1.Files.SideEffects"/> -->
     <rule ref="PSR2.Classes.ClassDeclaration"/>
     <rule ref="PSR2.Classes.PropertyDeclaration"/>
     <rule ref="PSR2.ControlStructures.ControlStructureSpacing"/>
@@ -82,7 +82,7 @@
     <rule ref="Squiz.Scope.MethodScope"/>
     <rule ref="Squiz.Scope.StaticThisUsage"/>
     <rule ref="Squiz.WhiteSpace.CastSpacing"/>
-    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing"/>
+    <!-- <rule ref="Squiz.WhiteSpace.ControlStructureSpacing"/> -->
     <!-- <rule ref="Squiz.WhiteSpace.FunctionClosingBraceSpace"/> -->
     <!-- <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace"/> -->
     <!-- <rule ref="Squiz.WhiteSpace.FunctionSpacing"/> -->
