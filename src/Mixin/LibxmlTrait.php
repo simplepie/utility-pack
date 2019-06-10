@@ -43,7 +43,7 @@ trait LibxmlTrait
      *
      * @param int $libxml TODO add a description here.
      *
-     * @return int
+     * @return self
      */
     public function setLibxml(int $libxml)
     {

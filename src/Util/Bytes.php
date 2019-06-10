@@ -154,6 +154,8 @@ class Bytes
      * @param string   $format    The final value is formatted using `sprintf()`. This is the format that should be
      *                            used. The default value is `%01.2f %s`.
      *
+     * @throws RuntimeException
+     *
      * phpcs:disable Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine
      */
     public static function format(
@@ -164,7 +166,7 @@ class Bytes
     ): string {
         // phpcs:enable
 
-        $units = $useBase10
+        $units = (int) $useBase10
             ? self::$base[10]
             : self::$base[2];
 
@@ -175,26 +177,26 @@ class Bytes
                 throw new RuntimeException(\sprintf(
                     'A base value of %s was used, which is not understood. Please use one of the class constants as '
                     . 'a base value instead.',
-                    $base
+                    (string) $base
                 ));
             }
 
             return \sprintf(
                 $format,
-                ($bytes / $base),
-                self::$notations[$base]
+                ($bytes / (int) $base),
+                (string) self::$notations[$base]
             );
         }
 
         // Otherwise, figure out the appropriate base unit
         while (\count($units) > 0) {
-            $base = \array_pop($units);
+            $base = (int) \array_pop($units);
 
             if ($bytes >= $base) {
                 return \sprintf(
                     $format,
-                    ($bytes / $base),
-                    self::$notations[$base]
+                    ($bytes / (int) $base),
+                    (string) self::$notations[(int) $base]
                 );
             }
         }

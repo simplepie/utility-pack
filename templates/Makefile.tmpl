@@ -15,7 +15,7 @@
 
 .PHONY: test
 test:
-	bin/phpunit
+	bin/phpunit --prepend tests/phpunit-xdebug-coverage.php
 
 .PHONY: test-quick
 test-quick:

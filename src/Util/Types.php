@@ -24,7 +24,7 @@ class Types
         $type = \gettype($param);
 
         if ('object' === $type) {
-            return \get_class($param);
+            return \get_class((object) $param);
         }
 
         return $type;
