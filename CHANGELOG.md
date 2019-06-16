@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2.1.0
+## 2.1.0 - 2019-06-16
 
 * Lots of additional static analysis to help catch a variety of errors that were not caught with tests.
 
