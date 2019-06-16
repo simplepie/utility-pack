@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.1.0
+
+* Lots of additional static analysis to help catch a variety of errors that were not caught with tests.
+
 ## 2.0.0 - 2019-05-05
 
 * Changed namespace from `Skyzyx\UtilityPack` → `SimplePie\UtilityPack\Util`.
