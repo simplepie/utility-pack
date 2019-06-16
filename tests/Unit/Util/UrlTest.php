@@ -20,6 +20,10 @@ use Slim\Http\Request;
  */
 class UrlTest extends AbstractTestCase
 {
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testUrlWith80(): void
     {
         $request = Request::createFromEnvironment(Environment::mock([
@@ -33,6 +37,10 @@ class UrlTest extends AbstractTestCase
         static::assertEquals('http://example.org/testing?qsa=asq', Url::getCompleteUrl($request));
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testUrlWith443(): void
     {
         $request = Request::createFromEnvironment(Environment::mock([
@@ -46,6 +54,10 @@ class UrlTest extends AbstractTestCase
         static::assertEquals('https://example.org/testing?qsa=asq', Url::getCompleteUrl($request));
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testUrlWith22(): void
     {
         $request = Request::createFromEnvironment(Environment::mock([
@@ -59,6 +71,10 @@ class UrlTest extends AbstractTestCase
         static::assertEquals('http://example.com/testing?qsa=asq', Url::getCompleteUrl($request));
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testUrlWith22NoQsa(): void
     {
         $request = Request::createFromEnvironment(Environment::mock([
@@ -71,6 +87,10 @@ class UrlTest extends AbstractTestCase
         static::assertEquals('http://example.com/testing', Url::getCompleteUrl($request));
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testUrlWith22NoQsaNoPath(): void
     {
         $request = Request::createFromEnvironment(Environment::mock([
@@ -82,6 +102,10 @@ class UrlTest extends AbstractTestCase
         static::assertEquals('http://example.com/', Url::getCompleteUrl($request));
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testUrlWith80NoQsaNoPath(): void
     {
         $request = Request::createFromEnvironment(Environment::mock([
@@ -93,6 +117,10 @@ class UrlTest extends AbstractTestCase
         static::assertEquals('http://example.com/', Url::getCompleteUrl($request));
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testUrlWith80NoQsaNoPathNoPort(): void
     {
         $request = Request::createFromEnvironment(Environment::mock([

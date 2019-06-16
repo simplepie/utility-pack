@@ -14,6 +14,11 @@ use SimplePie\Test\UtilityPack\Unit\AbstractTestCase;
 
 class SerializationTest extends AbstractTestCase
 {
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws \ReflectionException
+     */
     public function testIntrospect(): void
     {
         static::assertSame(SerializationEnum::introspect(), [
@@ -23,6 +28,11 @@ class SerializationTest extends AbstractTestCase
         ]);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws \ReflectionException
+     */
     public function testIntrospectKeys(): void
     {
         static::assertSame(SerializationEnum::introspectKeys(), [
@@ -32,6 +42,11 @@ class SerializationTest extends AbstractTestCase
         ]);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws \ReflectionException
+     */
     public function testHasValue(): void
     {
         static::assertTrue(SerializationEnum::hasValue(SerializationEnum::TEXT));

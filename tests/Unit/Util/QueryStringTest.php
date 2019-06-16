@@ -18,6 +18,10 @@ use SimplePie\UtilityPack\Util\QueryString;
  */
 class QueryStringTest extends AbstractTestCase
 {
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testBuild(): void
     {
         static::assertEquals('limit=a', QueryString::build([

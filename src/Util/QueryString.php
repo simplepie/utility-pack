@@ -20,7 +20,7 @@ class QueryString
     /**
      * Build a query string from a given set of key-value pairs.
      *
-     * @param array $qsa A set of key-value pairs to convert into a query string.
+     * @param string[] $qsa A set of key-value pairs to convert into a query string.
      *
      * @return string A query string.
      */

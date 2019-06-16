@@ -18,6 +18,10 @@ use SimplePie\UtilityPack\Util\Bytes;
  */
 class BytesTest extends AbstractTestCase
 {
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testByteValues(): void
     {
         static::assertEquals(Bytes::BYTE, 1);
@@ -63,11 +67,19 @@ class BytesTest extends AbstractTestCase
         static::assertEquals(Bytes::EXBIBYTES, 1152921504606846976);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testOtherByteValues(): void
     {
         static::assertEquals(0.99 * Bytes::EXABYTES, 990000000000000000);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testBase2(): void
     {
         static::assertEquals(Bytes::base2(0), Bytes::BYTES);
@@ -79,6 +91,10 @@ class BytesTest extends AbstractTestCase
         static::assertEquals(Bytes::base2(6), Bytes::EXBIBYTES);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testBase10(): void
     {
         static::assertEquals(Bytes::base10(0), Bytes::BYTES);
@@ -90,6 +106,11 @@ class BytesTest extends AbstractTestCase
         static::assertEquals(Bytes::base10(6), Bytes::EXABYTES);
     }
 
+    /**
+     * @throws \ArithmeticError
+     * @throws \RuntimeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testFormatBase2Auto(): void
     {
         static::assertEquals(Bytes::format(2 * Bytes::EXBIBYTES, false), '2.00 EiB');
@@ -104,6 +125,11 @@ class BytesTest extends AbstractTestCase
         static::assertEquals(Bytes::format(1 * Bytes::TEBIBYTE, false), '1.00 TiB');
     }
 
+    /**
+     * @throws \ArithmeticError
+     * @throws \RuntimeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testFormatBase10Auto(): void
     {
         static::assertEquals(Bytes::format(2 * Bytes::EXABYTES), '2.00 EB');
@@ -121,6 +147,11 @@ class BytesTest extends AbstractTestCase
         static::assertEquals(Bytes::format(990000000000), '990.00 GB');
     }
 
+    /**
+     * @throws \ArithmeticError
+     * @throws \RuntimeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testFormatBaseLock(): void
     {
         static::assertEquals(Bytes::format(1 * Bytes::EXABYTE), '1.00 EB');

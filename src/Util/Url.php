@@ -28,8 +28,8 @@ class Url
             $uri->getScheme(),
             $uri->getHost(),
             $uri->getPath(),
-            ($uri->getQuery() ? '?' . $uri->getQuery() : ''),
-            ($uri->getFragment() ? '#' . $uri->getFragment() : '')
+            ('' !== $uri->getQuery() ? '?' . $uri->getQuery() : ''),
+            ('' !== $uri->getFragment() ? '#' . $uri->getFragment() : '')
         );
     }
 }

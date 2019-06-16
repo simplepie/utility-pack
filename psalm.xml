@@ -39,6 +39,12 @@
         <LessSpecificReturnType errorLevel="info" />
 
         <!-- This is a series of classes which are used by other packages, so we want to suppress issues around classes not being used. -->
+        <MixedReturnTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="src/Enum/AbstractEnum.php" />
+                <file name="src/Enum/EnumInterface.php" />
+            </errorLevel>
+        </MixedReturnTypeCoercion>
         <PossiblyUnusedMethod>
             <errorLevel type="suppress">
                 <referencedMethod name="SimplePie\UtilityPack\Enum\EnumInterface::introspectKeys" />

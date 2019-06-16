@@ -50,9 +50,9 @@ trait LibxmlTrait
         $this->libxml = $libxml;
 
         // What are the libxml2 configurations?
-        $this->logger->debug(\sprintf(
+        $this->logger->debug(\sprintf( // @phan-suppress-current-line PhanUndeclaredProperty
             'Libxml configuration has a bitwise value of `%s`.%s',
-            $this->libxml,
+            (string) $this->libxml,
             (4792582 === $this->libxml)
                 ? ' (This is the default configuration.)'
                 : ''

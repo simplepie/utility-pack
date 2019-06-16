@@ -18,6 +18,10 @@ use SimplePie\UtilityPack\Util\Time;
  */
 class TimeTest extends AbstractTestCase
 {
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testTimeCalc(): void
     {
         // Seconds
@@ -46,6 +50,10 @@ class TimeTest extends AbstractTestCase
         static::assertEquals(1814400, 3 * Time::WEEKS);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testDayCalc(): void
     {
         static::assertEquals('DateTime', \get_class(Time::now()));

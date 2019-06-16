@@ -19,6 +19,10 @@ use SimplePie\UtilityPack\Util\Types;
  */
 class TypeTest extends AbstractTestCase
 {
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testTypes(): void
     {
         static::assertEquals('SimpleXMLElement', Types::getClassOrType(
