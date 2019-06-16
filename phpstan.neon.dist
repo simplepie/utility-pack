@@ -4,31 +4,10 @@ includes:
 	- vendor/phpstan/phpstan-strict-rules/rules.neon
 	- vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
 parameters:
-	excludes_analyse:
-		# - %rootDir%/tests/*/data/*
-	featureToggles:
-		# missingClosureNativeReturnTypehintRule: true
-	# exceptionRules:
-	# 	reportUnusedCatchesOfUncheckedExceptions: false
-	# 	reportCheckedThrowsInGlobalScope: false
-	# 	ignoreDescriptiveUncheckedExceptions: false
-	# 	checkedExceptions:
-	# 		- RuntimeException
 	ignoreErrors:
-		# - '#Variable property access on PhpParser\\Node\.#'
-		-
-			message: '/Constant XDEBUG_FILTER_CODE_COVERAGE not found./'
+		- message: '/Constant XDEBUG_FILTER_CODE_COVERAGE not found./'
 			path: %currentWorkingDirectory%/tests/phpunit-xdebug-coverage.php
-		-
-			message: '/Constant XDEBUG_PATH_WHITELIST not found./'
+		- message: '/Constant XDEBUG_PATH_WHITELIST not found./'
 			path: %currentWorkingDirectory%/tests/phpunit-xdebug-coverage.php
 	reportStaticMethodSignatures: true
 	tmpDir: %rootDir%/tmp
-services:
-	# scopeIsInTrait:
-	# 	class: PHPStan\Internal\ScopeIsInClassTypeSpecifyingExtension
-	# 	arguments:
-	# 		isInMethodName: isInTrait
-	# 		removeNullMethodName: getTraitReflection
-	# 	tags:
-	# 		- phpstan.typeSpecifier.methodTypeSpecifyingExtension
