@@ -13,9 +13,6 @@ namespace SimplePie\Test\UtilityPack\Unit\Util;
 use SimplePie\Test\UtilityPack\Unit\AbstractTestCase;
 use SimplePie\UtilityPack\Util\QueryString;
 
-/**
- * @coversNothing
- */
 class QueryStringTest extends AbstractTestCase
 {
     /**

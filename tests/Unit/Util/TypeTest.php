@@ -14,9 +14,6 @@ use SimplePie\Test\UtilityPack\Unit\AbstractTestCase;
 use SimplePie\UtilityPack\Util\Time;
 use SimplePie\UtilityPack\Util\Types;
 
-/**
- * @coversNothing
- */
 class TypeTest extends AbstractTestCase
 {
     /**

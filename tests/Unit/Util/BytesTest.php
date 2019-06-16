@@ -10,12 +10,10 @@ declare(strict_types=1);
 
 namespace SimplePie\Test\UtilityPack\Unit\Util;
 
+use RuntimeException;
 use SimplePie\Test\UtilityPack\Unit\AbstractTestCase;
 use SimplePie\UtilityPack\Util\Bytes;
 
-/**
- * @coversNothing
- */
 class BytesTest extends AbstractTestCase
 {
     /**
@@ -145,6 +143,34 @@ class BytesTest extends AbstractTestCase
         static::assertEquals(Bytes::format(2 * Bytes::TERABYTES), '2.00 TB');
         static::assertEquals(Bytes::format(1 * Bytes::TERABYTE), '1.00 TB');
         static::assertEquals(Bytes::format(990000000000), '990.00 GB');
+    }
+
+    /**
+     * @throws \ArithmeticError
+     * @throws \RuntimeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function testFormatBaseError1(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessageRegExp('/A base value of 1 was used, which is not understood. Please use one '
+            . 'of the class constants as a base value instead\./');
+
+        Bytes::format(1, true, 1);
+    }
+
+    /**
+     * @throws \ArithmeticError
+     * @throws \RuntimeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function testFormatBaseError2(): void
+    {
+        $this->expectException(RuntimeException::class);
+        // $this->expectExceptionMessageRegExp('/A base value of 1 was used, which is not understood. Please use one '
+        //     . 'of the class constants as a base value instead\./');
+
+        Bytes::format(1, true, 2);
     }
 
     /**

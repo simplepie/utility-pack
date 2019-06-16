@@ -15,9 +15,6 @@ use SimplePie\UtilityPack\Util\Url;
 use Slim\Http\Environment;
 use Slim\Http\Request;
 
-/**
- * @coversNothing
- */
 class UrlTest extends AbstractTestCase
 {
     /**

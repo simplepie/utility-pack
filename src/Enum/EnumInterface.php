@@ -18,18 +18,18 @@ interface EnumInterface
     /**
      * Introspects the Enum for its values.
      *
-     * @return string[] An associative array where the constant name is the key and the constant value is the value.
-     *
      * @throws \ReflectionException
+     *
+     * @return string[] An associative array where the constant name is the key and the constant value is the value.
      */
     public static function introspect(): array;
 
     /**
      * Introspects the Enum for its keys.
      *
-     * @return string[] An indexed array of constant names.
-     *
      * @throws \ReflectionException
+     *
+     * @return string[] An indexed array of constant names.
      */
     public static function introspectKeys(): array;
 
@@ -38,11 +38,11 @@ interface EnumInterface
      *
      * @param string $value The value to compare.
      *
+     * @throws \ReflectionException
+     *
      * @return bool Whether or not the value is one of the Enum values of this type. A value of `true` means that the
      *              value is one of the Enum values. A value of `false` means that the value is NOT one of the
      *              Enum values.
-     *
-     * @throws \ReflectionException
      */
     public static function hasValue(string $value): bool;
 }
