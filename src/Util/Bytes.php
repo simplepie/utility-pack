@@ -206,7 +206,7 @@ class Bytes
             }
         }
 
-        throw new RuntimeException((string) $bytes);
+        throw new RuntimeException((string) $bytes); // @codeCoverageIgnore
     }
 
     /**

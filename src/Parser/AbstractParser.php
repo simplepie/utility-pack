@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace SimplePie\UtilityPack\Parser;
 
 use Psr\Http\Message\StreamInterface;
-use RuntimeException;
 
 /**
  * The base parser class that all other parser classes extend from. It handles low-level functionality that is shared
@@ -37,16 +36,10 @@ abstract class AbstractParser implements ParserInterface
      * @param StreamInterface $stream A PSR-7 `StreamInterface` which is typically returned by the
      *                                `getBody()` method of a `ResponseInterface` class.
      *
-     * @throws RuntimeException
-     *
      * @return string The raw contents of the steam resource.
      */
     public function readStream(StreamInterface $stream): string
     {
-        try {
-            return $stream->getContents();
-        } catch (RuntimeException $e) {
-            throw $e;
-        }
+        return $stream->getContents();
     }
 }
