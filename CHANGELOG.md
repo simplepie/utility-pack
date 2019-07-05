@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.2.0
+
+* Finished writing tests with 100% code coverage.
+* Finished fixing things that were caught with static analysis.
+
 ## 2.1.0 - 2019-06-16
 
 * Lots of additional static analysis to help catch a variety of errors that were not caught with tests.
