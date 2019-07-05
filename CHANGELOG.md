@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2.2.0
+## 2.2.0 - 2019-07-04
 
 * Finished writing tests with 100% code coverage.
 * Finished fixing things that were caught with static analysis.
