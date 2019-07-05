@@ -15,6 +15,9 @@ use SimplePie\UtilityPack\Parser\AbstractParser;
 
 class TestParser extends AbstractParser
 {
+    /**
+     * @var \Psr\Http\Message\StreamInterface
+     */
     protected $stream;
 
     public function __construct(StreamInterface $stream)

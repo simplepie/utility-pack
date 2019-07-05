@@ -22,6 +22,10 @@ class RawDocumentTraitTest extends AbstractTestCase
         $this->rawDocument = 'This is my document.';
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testGetRawDocument(): void
     {
         static::assertTrue('This is my document.' === $this->getRawDocument());

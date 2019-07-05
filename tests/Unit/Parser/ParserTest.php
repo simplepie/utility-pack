@@ -11,22 +11,35 @@ declare(strict_types=1);
 namespace SimplePie\Test\UtilityPack\Unit\Parser;
 
 use GuzzleHttp\Psr7;
-use RuntimeException;
+use InvalidArgumentException;
 use SimplePie\Test\UtilityPack\Unit\AbstractTestCase;
 use TypeError;
 
 class ParserTest extends AbstractTestCase
 {
+    /**
+     * @var \SimplePie\UtilityPack\Parser\AbstractParser
+     */
     protected $parser;
 
+    /**
+     * @var \Psr\Http\Message\StreamInterface
+     */
     protected $stream;
 
+    /**
+     * @throws InvalidArgumentException
+     */
     protected function setUp(): void
     {
         $this->stream = Psr7\stream_for('This is my data stream content.');
         $this->parser = new TestParser($this->stream);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testString(): void
     {
         static::assertStringMatchesFormat(
@@ -35,6 +48,10 @@ class ParserTest extends AbstractTestCase
         );
     }
 
+    /**
+     * @throws \RuntimeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testStream(): void
     {
         $str = $this->parser->readStream($this->stream);
@@ -42,7 +59,7 @@ class ParserTest extends AbstractTestCase
     }
 
     /**
-     * @throws RuntimeException
+     * @throws \RuntimeException
      */
     public function testException(): void
     {

@@ -12,7 +12,6 @@ namespace SimplePie\Test\UtilityPack\Unit\Mixin;
 
 use Monolog\Handler\TestHandler;
 use Monolog\Logger;
-use Psr\Log\LogLevel;
 use SimplePie\Test\UtilityPack\Unit\AbstractTestCase;
 use SimplePie\UtilityPack\Mixin\LibxmlTrait;
 use SimplePie\UtilityPack\Mixin\LoggerTrait;
@@ -22,17 +21,24 @@ class LibxmlTraitTest extends AbstractTestCase
     use LibxmlTrait;
     use LoggerTrait;
 
+    /**
+     * @var \Monolog\Handler\TestHandler
+     */
     protected $handler;
 
     protected function setUp(): void
     {
         $logger = new Logger('Testing');
-        $logger->pushHandler(new TestHandler(LogLevel::DEBUG));
+        $logger->pushHandler(new TestHandler());
 
         $this->libxml = 0;
         $this->setLogger($logger);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testLibxmlDefault(): void
     {
         // Default value
@@ -40,7 +46,7 @@ class LibxmlTraitTest extends AbstractTestCase
 
         // Set default configuration
         $this->setLibxml(
-            $this->getDefaultLibxmlConfig()
+            static::getDefaultLibxmlConfig()
         );
 
         // New value

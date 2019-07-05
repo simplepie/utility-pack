@@ -13,6 +13,7 @@ namespace SimplePie\Test\UtilityPack\Unit\Mixin;
 use DOMDocument;
 use SimplePie\Test\UtilityPack\Unit\AbstractTestCase;
 use SimplePie\UtilityPack\Mixin\DomDocumentTrait;
+use SimplePie\UtilityPack\Util\Types;
 
 class DomDocumentTraitTest extends AbstractTestCase
 {
@@ -24,10 +25,14 @@ class DomDocumentTraitTest extends AbstractTestCase
         $this->getDefaultDomConfig($this->domDocument);
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testValidateDomDocument(): void
     {
-        static::assertTrue($this->domDocument instanceof DOMDocument);
-        static::assertTrue($this->getDomDocument() instanceof DOMDocument);
+        static::assertSame(DOMDocument::class, Types::getClassOrType($this->domDocument));
+        static::assertSame(DOMDocument::class, Types::getClassOrType($this->getDomDocument()));
 
         static::assertTrue($this->getDomDocument()->recover);
         static::assertTrue($this->getDomDocument()->resolveExternals);

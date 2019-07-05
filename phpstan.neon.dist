@@ -11,5 +11,14 @@ parameters:
 		-
 			message: '/Constant XDEBUG_PATH_WHITELIST not found./'
 			path: %currentWorkingDirectory%/tests/phpunit-xdebug-coverage.php
+		-
+			message: '/Call to an undefined method Psr\\Log\\LoggerInterface::getHandlers\(\)/'
+			path: %currentWorkingDirectory%/tests/Unit/Mixin/LibxmlTraitTest.php
+		-
+			message: '/PHPDoc tag @throws with type InvalidArgumentException is not compatible with parent/'
+			path: %currentWorkingDirectory%/tests/Unit/Parser/ParserTest.php
+		-
+			message: '/Parameter #1 \$stream of method SimplePie\\UtilityPack\\Parser\\AbstractParser::readStream\(\) expects Psr\\Http\\Message\\StreamInterface, string given/'
+			path: %currentWorkingDirectory%/tests/Unit/Parser/ParserTest.php
 	reportStaticMethodSignatures: true
 	tmpDir: %rootDir%/tmp

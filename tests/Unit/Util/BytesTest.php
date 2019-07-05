@@ -148,7 +148,6 @@ class BytesTest extends AbstractTestCase
     /**
      * @throws \ArithmeticError
      * @throws \RuntimeException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function testFormatBaseError1(): void
     {
@@ -162,7 +161,6 @@ class BytesTest extends AbstractTestCase
     /**
      * @throws \ArithmeticError
      * @throws \RuntimeException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function testFormatBaseError2(): void
     {

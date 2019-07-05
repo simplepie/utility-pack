@@ -36,6 +36,8 @@ abstract class AbstractParser implements ParserInterface
      * @param StreamInterface $stream A PSR-7 `StreamInterface` which is typically returned by the
      *                                `getBody()` method of a `ResponseInterface` class.
      *
+     * @throws \RuntimeException
+     *
      * @return string The raw contents of the steam resource.
      */
     public function readStream(StreamInterface $stream): string

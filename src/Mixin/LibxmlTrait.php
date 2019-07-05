@@ -42,10 +42,8 @@ trait LibxmlTrait
      * Sets the libxml value to use for parsing XML.
      *
      * @param int $libxml TODO add a description here.
-     *
-     * @return self
      */
-    public function setLibxml(int $libxml)
+    public function setLibxml(int $libxml): self
     {
         $this->libxml = $libxml;
 

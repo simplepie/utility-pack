@@ -29,10 +29,8 @@ trait LoggerTrait
      * Sets the PSR-3 logger.
      *
      * @param LoggerInterface $logger A PSR-3 compatible logger.
-     *
-     * @return self
      */
-    public function setLogger(LoggerInterface $logger)
+    public function setLogger(LoggerInterface $logger): self
     {
         $this->logger = $logger;
 

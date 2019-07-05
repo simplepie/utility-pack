@@ -35,7 +35,7 @@ trait DomDocumentTrait
     /**
      * Gets the default (preferred) configuration for DOMDocument.
      */
-    public function getDefaultDomConfig(DOMDocument $domDocument)
+    public function getDefaultDomConfig(DOMDocument $domDocument): DOMDocument
     {
         $domDocument->recover             = true;
         $domDocument->formatOutput        = false;
