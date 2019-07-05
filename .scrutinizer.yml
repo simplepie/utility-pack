@@ -168,20 +168,6 @@ tools:
   php_sim: false
   php_code_coverage:
     enabled: true
-  php_code_sniffer:
-    enabled: true
-    config:
-      standard: PSR2
-    filter:
-      paths: ["src/*", "tests/*"]
-  php_cs_fixer:
-    enabled: true
-    config:
-      level: all
-    filter:
-      paths:
-        - 'src/*'
-        - 'tests/*'
   php_cpd:
     enabled: true
     excluded_dirs:
