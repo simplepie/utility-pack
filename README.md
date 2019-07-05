@@ -22,8 +22,7 @@ A set of small utilities for PHP 7.2+.
 [![Travis branch](https://img.shields.io/travis/simplepie/utility-pack/master.svg?style=for-the-badge&label=Travis%20CI)](https://travis-ci.org/simplepie/utility-pack)
 [![Coveralls](https://img.shields.io/coveralls/github/simplepie/utility-pack/master.svg?style=for-the-badge)](https://coveralls.io/github/simplepie/utility-pack)
 [![Code Quality](http://img.shields.io/scrutinizer/g/simplepie/utility-pack.svg?style=for-the-badge&label=Scrutinizer)](https://scrutinizer-ci.com/g/simplepie/utility-pack)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/@@INSIGHT@@.svg?style=for-the-badge&label=SensioLabs%20Insight)](https://insight.sensiolabs.com/projects/@@INSIGHT@@)
-[![Codacy](https://img.shields.io/codacy/grade/@@CODACY@@/master.svg?style=for-the-badge&label=Codacy)](https://www.codacy.com/app/simplepie/utility-pack)
+[![Symfony Insight](https://img.shields.io/sensiolabs/i/ea218481-dce7-434a-8a3c-bd9cd9818cca.svg?style=for-the-badge&label=Symfony%20Insight)](https://insight.symfony.com/projects/ea218481-dce7-434a-8a3c-bd9cd9818cca)
 
 ### Social
 
