@@ -1,0 +1,285 @@
+# Configure the PHP version SymfonyInsight should use to analyze
+# your project. It can be defined to 5, 7.0, or 7.1. If not
+# present, it will prefer 7.1 but fallback to 5 if errored.
+php_version: 7.2
+
+# Configure which PHP extensions your project need to be analyzed.
+php_ini: |
+    extension=curl.so
+    extension=iconv.so
+    extension=intl.so
+    extension=mbstring.so
+    extension=pcntl.so
+    extension=zip.so
+    extension=zlib.so
+
+# Ignore some branches to avoid triggering analysis for these
+ignore_branches:
+    - gh-pages
+
+# Configure the failure conditions for your commit status.
+# If at least one of these conditions is verified, the commit status is displayed as failed.
+commit_failure_conditions:
+    # By severities count (default configuration, any change will override it)
+    - "project.severity.critical > 0"
+    - "project.severity.major > 0"
+
+# Configure in which directory your code is located.
+# This can be set to any subdirectory of your project.
+working_directory: src
+
+# Configure the directories excluded from the analysis. By default,
+# this setting excldues directories commonly used to store tests
+# and third-party libraries.
+global_exclude_dirs:
+    - vendor
+    - vendors
+    - test
+    - tests
+    - Tests
+    - spec
+    - features
+    - Fixtures
+    - DataFixtures
+    - var
+
+rules:
+    composer.apc_class_loader_should_be_enabled:
+        enabled: false
+    composer.dependencies_not_installable:
+        enabled: false
+    composer.invalid_file:
+        enabled: false
+    composer.outdated_lock_file:
+        enabled: true
+    composer.security_issue_in_composer:
+        enabled: true
+    composer.unfixed_dependency_version:
+        enabled: true
+    composer.warning:
+        enabled: false
+    doctrine.database_query_contains_string_and_variable_concatenation:
+        enabled: false
+    doctrine.invalid_schema:
+        enabled: false
+    doctrine.use_flush_in_loop:
+        enabled: false
+    git.user_specific_ignored_file:
+        enabled: false
+    html.html_link_contains_javascript:
+        enabled: false
+    invalid_e_o_l:
+        enabled: true
+        eol: unix
+    missing_e_o_l:
+        enabled: true
+    mock.rule: []
+    php.absolute_path_present:
+        enabled: true
+        allowed_paths: [/dev, /etc, /proc]
+    php.bad_mutator_method_name_for_boolean_property:
+        enabled: true
+    php.boolean_statement:
+        enabled: true
+    php.class_too_long:
+        enabled: true
+        max_length: 500
+        threshold: 5
+    php.commented_out_code:
+        enabled: false
+    php.contaminant_third_party_component_license:
+        enabled: true
+    php.debug_statements:
+        enabled: true
+    php.duplicated_code:
+        enabled: true
+    php.dynamically_change_configuration:
+        enabled: true
+    php.file_contains_more_than_one_class:
+        enabled: true
+    php.for_loop_uses_test_function:
+        enabled: true
+    php.interface_has_no_interface_suffix:
+        enabled: true
+        interface_name_pattern: /Interface$/
+    php.method_or_property_missing_visibility:
+        enabled: true
+    php.method_too_long:
+        enabled: true
+        max_length: 50
+        threshold: 5
+    php.missing_use_statement:
+        enabled: true
+    php.neglected_tests:
+        enabled: true
+    php.object_parameter_not_type_hinted:
+        enabled: true
+    php.php7_reserved_words:
+        enabled: true
+    php.php_magic_methods:
+        enabled: true
+    php.php_syntax_error:
+        enabled: true
+    php.psr1:
+        enabled: true
+    php.silenced_error:
+        enabled: true
+        function_whitelist: [unlink, fopen, fwrite, fclose, rename, chmod, mkdir, rmdir, file_put_contents, move_uploaded_file, chgrp, lchgrp, chown, lchown, touch, symlink, highlight_file, ftp_get, ftp_close, ftp_size, ftp_chdir, ftp_delete, ftp_rmdir, ftp_put, ftp_mkdir, ftp_chmod, ftp_nlist, copy, delete, fileatime, filectime, filemtime, is_readable, is_writable, is_writeable, is_executable, is_link, is_file, is_directory, fputs, fsockopen, get_resource_type, getenv, getimagesize, iconv, imagecreatefromstring, ldap_add, ldap_bind, ldap_delete, ldap_get_option, ldap_modify, ldap_search, ldap_set_option, link, posix_isatty, readfile, readlink, stream_socket_client]
+    php.static_method_should_not_use_this:
+        enabled: true
+    php.strict_boolean_comparison_should_be_used:
+        enabled: true
+    php.too_many_files_per_folder_for_performance:
+        enabled: true
+        max_count: 10000
+    php.too_permissive_file_permissions:
+        enabled: true
+        allowed_dirs: [bin, scripts]
+    php.unreachable_code:
+        enabled: true
+    php.unused_local_variable_or_private_member:
+        enabled: true
+    php.unused_use_statement:
+        enabled: true
+    php.use_deprecated_function:
+        enabled: true
+    php.use_exit_function:
+        enabled: true
+    php.use_global_variable_or_function:
+        enabled: true
+    php.use_php_ereg_function:
+        enabled: true
+    php.use_php_eval_function:
+        enabled: true
+    php.use_php_short_open_tag:
+        enabled: true
+    php.use_php_sleep_function:
+        enabled: true
+    symfony.acme_bundle_found:
+        enabled: false
+    symfony.app.cache_or_log_file_in_repository:
+        enabled: false
+    symfony.app.confidential_parameters_file_present_in_repository:
+        enabled: false
+    symfony.app.first_level_service:
+        enabled: false
+    symfony.app.sensitive_data_found_in_application_configuration:
+        enabled: false
+    symfony.application_not_bootable:
+        enabled: false
+    symfony.bundle_boot_method_should_be_empty:
+        enabled: false
+    symfony.configuration.error_pages_should_be_customised:
+        enabled: false
+    symfony.configuration.yaml_syntax_error:
+        enabled: false
+    symfony.controller.action_method_too_long:
+        enabled: false
+    symfony.controller.get_action_mutates_resource:
+        enabled: false
+    symfony.controller.missing_redirect_after_post:
+        enabled: false
+    symfony.controller.non_action_public_method_in_controller_class:
+        enabled: false
+    symfony.controller.too_many_actions_per_controller:
+        enabled: false
+    symfony.controller.too_many_template_variables:
+        enabled: false
+    symfony.dependency_injection.no_container_as_parameter:
+        enabled: false
+    symfony.dependency_injection.no_entity_manager_as_parameter:
+        enabled: false
+    symfony.dependency_injection.use_dir_file_constant:
+        enabled: false
+    symfony.dependency_injection.use_interface_type_hint:
+        enabled: false
+    symfony.exceptions_enabled_in_production:
+        enabled: false
+    symfony.form.form_type_not_in_type_form_folder:
+        enabled: false
+    symfony.include_statement_used:
+        enabled: false
+    symfony.inject_request_service:
+        enabled: false
+    symfony.obvious_csrf_key:
+        enabled: false
+    symfony.print_statements:
+        enabled: false
+    symfony.request.session_cookie_default_name:
+        enabled: false
+    symfony.request.use_create_from_globals:
+        enabled: false
+    symfony.routing.action_not_restricted_by_method:
+        enabled: false
+    symfony.routing.route_references_non_existent_action:
+        enabled: false
+    symfony.security.insecure_password_hashing_algorithm:
+        enabled: false
+    symfony.security.throw_access_denied_http_exception:
+        enabled: false
+    symfony.sessions_in_cache_directory:
+        enabled: false
+    symfony.templating.too_many_esi_inclusions:
+        enabled: false
+    symfony.twig_not_bootable:
+        enabled: false
+    symfony.use_php_database_function:
+        enabled: false
+    symfony.use_php_response_function:
+        enabled: false
+    symfony.use_php_session_function:
+        enabled: false
+    symfony.use_super_globals:
+        enabled: false
+    symfony.verbose_logging_in_production:
+        enabled: false
+    symfony.version.end_of_life:
+        enabled: false
+    symfony.version.latest_stable:
+        enabled: false
+    symfony.version.out_of_maintenance:
+        enabled: false
+    symfony.web.contains_php_files:
+        enabled: false
+    symfony.web.web_bundle_folder_present_in_repository:
+        enabled: false
+    symfony.web_config_should_not_be_present:
+        enabled: false
+    task_fixme_comment:
+        enabled: false
+    task_todo_comment:
+        enabled: false
+    task_xxx_comment:
+        enabled: false
+    third_party.use_deprecated_class:
+        enabled: false
+    third_party.use_deprecated_service:
+        enabled: false
+    twig.auto_reload_enabled:
+        enabled: false
+    twig.debug_enabled:
+        enabled: false
+    twig.disabled_escaper:
+        enabled: false
+    twig.disabled_strict_variable:
+        enabled: false
+    twig.template_too_complex:
+        enabled: false
+    twig.template_too_long:
+        enabled: false
+    twig.twig_syntax_error:
+        enabled: false
+    twig.xss_vulnerability:
+        enabled: false
+    web.apache_config:
+        enabled: false
+    web.default_favicon:
+        enabled: false
+    web.missing_favicon:
+        enabled: false
+    web.missing_robots_txt:
+        enabled: false
+    web.non_utf8_encoding:
+        enabled: true
+    xml.syntax_error:
+        enabled: true
